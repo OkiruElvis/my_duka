@@ -46,7 +46,6 @@
 # 3.Create two BankAccount objects that can deposit, withdraw and display_info
 
 class BankAccount:
-    # Constructor
     def __init__(self, account_number, balance, owner_name, date_opened):
         self.account_number = account_number
         self.balance = balance
