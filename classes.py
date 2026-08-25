@@ -78,31 +78,21 @@ class BankAccount:
 
 
 # Creating the first BankAccount object
-account1 = BankAccount(
-    "ACC001",
-    50000,
-    "John Doe",
-    "25-08-2026"
-)
+account1 = BankAccount("ACC001",50000,"Elvis Okiru","25-08-2026")
 
 # Creating the second BankAccount object
-account2 = BankAccount(
-    "ACC002",
-    30000,
-    "Jane Smith",
-    "25-08-2026"
-)
+account2 = BankAccount("ACC002",30000,"Wendy Albright","25-08-2026")
 
 
 # Account 1 operations
 account1.display_info()
-account1.deposit(10000)
+account1.deposit(20000)
 account1.withdraw(5000)
 account1.display_info()
 
 
 # Account 2 operations
 account2.display_info()
-account2.deposit(5000)
-account2.withdraw(8000)
+account2.deposit(8000)
+account2.withdraw(10000)
 account2.display_info()
