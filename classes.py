@@ -1,3 +1,9 @@
+from datetime import datetime
+
+today = datetime.today()
+print(today)
+
+
 # class Person:
 #     def __init__(self,name,age,gender):
 #         self.name=name
@@ -45,53 +51,63 @@
 # 2.Give the above BankAccount class the following behaviour or methods: -deposit() -withdraw() -display_info() 
 # 3.Create two BankAccount objects that can deposit, withdraw and display_info
 
-class BankAccount:
-    def __init__(self, account_number, balance, owner_name, date_opened):
-        self.account_number = account_number
-        self.balance = balance
-        self.owner_name = owner_name
-        self.date_opened = date_opened
+# class BankAccount:
+#     def __init__(self,acc_no,balance,owner_name,date_opened=today):
+#         self.account_number = acc_no
+#         self.balance = balance
+#         self.owner_name = owner_name
+#         self.date_opened = date_opened
 
-    # Deposit method
-    def deposit(self, amount):
-        self.balance += amount
-        print(f"{amount} deposited successfully.")
-        print(f"New balance: {self.balance}")
-
-    # Withdraw method
-    def withdraw(self, amount):
-        if amount <= self.balance:
-            self.balance -= amount
-            print(f"{amount} withdrawn successfully.")
-            print(f"New balance: {self.balance}")
-        else:
-            print("Insufficient funds.")
-
-    # Display account information
-    def display_info(self):
-        print("\n--- Bank Account Information ---")
-        print(f"Account Number: {self.account_number}")
-        print(f"Owner Name: {self.owner_name}")
-        print(f"Balance: {self.balance}")
-        print(f"Date Opened: {self.date_opened}")
+#     def deposit(self,amount):
+#         if amount > 0:
+#             self.balance += amount
+#             print(f"{self.owner_name} deposited Ksh.{amount} to account: {self.account_number} \n New Balance is {self.balance}")
+#         else:
+#             print("Invalid amount entered,try again")
 
 
-# Creating the first BankAccount object
-account1 = BankAccount("ACC001",50000,"Elvis Okiru","25-08-2026")
-
-# Creating the second BankAccount object
-account2 = BankAccount("ACC002",30000,"Wendy Albright","25-08-2026")
-
-
-# Account 1 operations
-account1.display_info()
-account1.deposit(20000)
-account1.withdraw(5000)
-account1.display_info()
+#     def withdraw(self,amount):
+#         if amount > self.balance and amount < 0:
+#             print("Cannot complete withdrawal,invalid amount")
+#         else:
+#             self.balance -= amount
+#             print(f"{self.owner_name} has withdrawn Ksh.{amount} from account: {self.account_number} \n New Balance is {self.balance}")
 
 
-# Account 2 operations
-account2.display_info()
-account2.deposit(8000)
-account2.withdraw(10000)
-account2.display_info()
+#     def display_info(self):
+#         print("-------My Bank Account Info-------")
+#         print(f"Acc No: {self.account_number}")
+#         print(f"Balance: {self.balance}")
+#         print(f"Owner Name: {self.owner_name}")
+#         print(f"Date Opened: {self.date_opened}")
+
+
+# account1 = BankAccount("Acc001",0,"Jane")
+# account1.deposit(10000)
+# account1.withdraw(3000)
+# account1.display_info()
+
+
+
+class Animal:
+    def __init__(self,name,type):
+        self.name = name
+        self.type = type
+
+    def make_sound(self):
+        print(f"{self.name} makes some sound")
+
+
+class Dog(Animal):
+    def __init__(self, name, type,age):
+        super().__init__(name, type)
+    
+        self.age = age 
+
+    def make_sound(self):
+        print(f"{self.name} says woof!")
+
+
+dog1 = Dog("Max","German Shepherd",5)
+print(dog1.name)
+dog1.make_sound()
