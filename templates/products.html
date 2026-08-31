@@ -1,33 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/index.css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-         <nav class="navbar">
-            <div class="container-fluid nav">
-                <ul class="navbar-nav">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/products">Products</a></li>
-                    <li><a href="/sales">Sales</a></li>
-                    <li><a href="/stock">Stock</a></li>
-                    <li><a href="/register">Register</a></li>
-                    <li><a href="/dashboard">Dashboard</a></li>
-                    <li class="login"><a href="/login">Login</a></li>
-                </ul>
-            </div>
-        </nav>
+{% extends 'base.html' %}
+{% block title %} Products {% endblock %}
+{% block content %}
+<div>
 
-        <div>
-            <h1>Products</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias quisquam possimus enim ad nisi nobis aliquid et dolorum, minima quia cumque nemo consectetur nam, obcaecati voluptate cum perferendis corrupti neque ea. Deleniti impedit quisquam laudantium pariatur sit, voluptas aliquid est sed vel voluptatum nemo dolorem quae fuga optio rem eius totam debitis molestiae quis repellendus qui? Quaerat iure non voluptatum aut aperiam esse. Sunt incidunt ea, quasi nostrum odit, sequi sit placeat dolorem soluta maxime repellendus nobis explicabo autem architecto, omnis nihil consequatur qui. Quibusdam quis quidem vel doloremque dolor, dolorum dolorem minus exercitationem, culpa autem, quo distinctio et nobis!</p>
-        </div>
+    <p>This is the products page</p>
 
-      
-    </div>
-</body>
-</html>
+
+</div>
+{% endblock %}

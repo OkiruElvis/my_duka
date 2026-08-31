@@ -1,33 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/index.css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <nav class="navbar">
-            <div class="container-fluid nav">
-                <ul class="navbar-nav">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/products">Products</a></li>
-                    <li><a href="/sales">Sales</a></li>
-                    <li><a href="/stock">Stock</a></li>
-                    <li><a href="/register">Register</a></li>
-                    <li><a href="/dashboard">Dashboard</a></li>
-                    <li class="login"><a href="/login">Login</a></li>
-                </ul>
-            </div>
-        </nav>
+{% extends 'base.html' %}
+{% block title %} Sales {% endblock %}
+{% block content %}
+<div>
 
-        <div>
-            <h1>Sales</h1>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum suscipit eos at dolor illo impedit. Maiores deserunt odio, natus nihil asperiores, nesciunt ratione inventore quaerat, doloribus nam ut commodi. Dolore ipsum possimus doloremque ipsam deserunt obcaecati quaerat. Illum deleniti optio asperiores pariatur, blanditiis nemo minus doloribus consectetur non omnis natus?</p>
-        </div>
+    <p>This is the sales page</p>
 
-        
-    </div>
-</body>
-</html>
+
+</div>
+{% endblock %}
