@@ -1,9 +1,19 @@
 {% extends 'base.html' %}
 {% block title %} Sales {% endblock %}
 {% block content %}
-<div>
+<div class="container">
 
     <p>This is the sales page</p>
+
+    {{ num }}
+
+    {% if num==12 %}
+        <p>Num is 12</p>
+    {% else %}
+        <p>Num is not 12</p>
+    {% endif %}
+    
+
 
 
 </div>

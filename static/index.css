@@ -1,37 +1,160 @@
-.navbar{
-    background-color: rgb(54, 54, 118);
-    /* padding: 0; */
-    /* width: 100%; */
+.navbar {
+    background-color:cadetblue;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
 }
-.nav{
+.navbar-container {
     display: flex;
-    justify-content:space-around;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 1rem;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+/* left section (MyDuka) */
+.navbar-left {
+    /* pushes the center and right sections away */
+    margin-right: auto;
+}
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333333;
+    text-decoration: none;
+}
+
+/* center section (Navigation links) */
+.navbar-center {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
     align-items: center;
 }
-.navbar-nav{
-    list-style: none;
+.nav-item {
+    /* Spacing between navigation item */
+    margin: 0 0.75rem; 
+}
+.nav-link {
+    color: #555;
+    text-decoration: none;
+    font-size: 1rem;
+    padding-inline: 0.5rem 0;
+}
+.navbar-center .nav-link:hover,
+.nav-link:focus {
+    color: #007bff;
+}
+/* .nav-link[aria-current="page"] {
+    font-weight: bold;
+    color: #0056b3;
+} */
+
+/* right section (Register/Login) */
+.navbar-right {
+    /* pushes this section to the far right */
+    margin-left: auto;
+}
+.navbar-right .nav-item {
+    margin: 0 0.5rem;
+}
+.navbar-right .nav-link {
+    color: #007bff;
+    font-weight: bold;
+    border: 1px solid #007bff;
+    padding: 0.3rem 0.8rem;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.navbar-right .nav-link:hover,
+.navbar-right .nav-link:focus {
+    background-color: #007bff;
+    color: #fff;
+}
+
+
+
+/* Footer Stylings */
+.footer-main {
+    margin-top: 415px;
+    width: 100%;
+}
+.footer {
+    background-color: rgb(37, 106, 109);
+    color: white;
+    padding: 40px 20px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.footer-container {
     display: flex;
-    margin: 0;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+}
+.footer-col h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: rgb(75, 37, 37);
+}
+.footer-col p, .footer-col li {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #cccccc;
+}
+.footer-col ul {
+    list-style: none;
     padding: 0;
 }
-.navbar-nav li a {
-    display: block;
-    color: white;
+.footer-col ul li a {
     text-decoration: none;
-    padding: 18px 22px;
-    font-size: 16px;
-    font-weight: 1000;
-    /* transition: 0.3s; */
+    color: #cccccc;
 }
-.navbar-nav li a:hover {
-    background-color: rgb(41, 98, 41);
-    color: #60a5fa;
-    border-radius: 10px;
+.footer-col ul li a:hover {
+    color: #ffcc00;
 }
-.navbar-nav li a:active {
-    background-color: #4f1b48;
-    color: gray;
+.footer-col form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
 }
-.hello{
-    color: red;
+.footer-col input {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
 }
+.footer-col button {
+    padding: 10px;
+    background-color: #ffcc00;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.footer-col button:hover {
+    background-color: #e6b800;
+}
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #333333;
+    margin-top: 30px;
+    padding-bottom: 15px;
+    font-size: 12px;
+    color: #777777;
+}
+
