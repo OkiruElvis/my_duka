@@ -1,12 +1,329 @@
-{% extends 'base.html' %}
-{% block title %} Home {% endblock %}
-{% block content %}
+{% extends 'base.html' %} {% block title %} Home {% endblock %} {% block content
+%}
 <div class="container">
+  <!-- Delivery Offer Bar -->
+  <!-- <div class="delivery">
+    <i class="fa-solid fa-truck" style="color: rgb(255, 212, 59)"></i>
+    &nbsp; FREE DELIVERY on Orders Over Ksh 2000! &nbsp;&nbsp;<a href="/"
+      >Shop Now!</a
+    >
+  </div> -->
 
-    <p>This is the home page</p>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>
+        Your <span>#1 Online Store</span>
+        <br />
+        for Fast, Reliable, and
+        <br />
+        Affordable Shopping
+      </h1>
 
-    {{ name }}
+      <h2>Right at Your Doorstep.</h2>
 
+      <p>
+        Shop a wide range of quality products at the best prices and enjoy fast
+        delivery you can trust.
+      </p>
 
+      <div class="hero-buttons">
+        <a href="/"
+          ><i
+            class="fa-solid fa-cart-plus"
+            style="color: rgb(255, 212, 59)"
+          ></i>
+          &nbsp;<button
+            type="button"
+            class="btn btn-primary"
+            style="
+              --bs-btn-padding-y: 0.25rem;
+              --bs-btn-padding-x: 0.5rem;
+              --bs-btn-font-size: 0.75rem;
+            "
+          >
+            <strong>Shop Now</strong>
+          </button></a
+        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/"
+          ><i class="fa-solid fa-rocket" style="color: rgb(255, 212, 59)"></i>
+          &nbsp;<button
+            type="button"
+            class="btn btn-primary"
+            style="
+              --bs-btn-padding-y: 0.25rem;
+              --bs-btn-padding-x: 0.5rem;
+              --bs-btn-font-size: 0.75rem;
+            "
+          >
+            <strong>Explore Deals</strong>
+          </button></a
+        >
+      </div>
+
+      <!-- Hero Benefits -->
+      <div class="hero-benefits">
+        <div class="hero-benefit">
+          <div class="benefit-icon">
+            <i
+              class="fa-solid fa-truck-fast"
+              style="color: rgb(255, 212, 59)"
+            ></i>
+          </div>
+          <div>
+            <strong>Fast Delivery</strong>
+            <p>At Your Doorstep</p>
+          </div>
+        </div>
+
+        <div class="hero-benefit">
+          <div class="benefit-icon">
+            <i
+              class="fa-solid fa-shield-halved"
+              style="color: rgb(255, 212, 59)"
+            ></i>
+          </div>
+          <div>
+            <strong>Secure Shopping</strong>
+            <p>100% Protected</p>
+          </div>
+        </div>
+
+        <div class="hero-benefit">
+          <div class="benefit-icon">
+            <i class="fa-solid fa-tags" style="color: rgb(255, 212, 59)"></i>
+          </div>
+          <div>
+            <strong>Best Prices</strong>
+            <p>Affordable Always</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCT MOCK UP -->
+    <div class="hero-image">
+      <div class="delivery-badge">
+        <i class="fa-regular fa-truck" style="color: cadetblue"></i>
+        <strong>FAST<br />DELIVERY</strong>
+      </div>
+
+      <div class="phone">
+        <div class="phone-top"></div>
+
+        <div class="phone-content">
+          <div class="phone-logo">
+            <i
+              class="fa-brands fa-shopify"
+              style="color: rgb(255, 212, 59)"
+            ></i>
+            <strong>Shopiefy</strong>
+          </div>
+
+          <div class="search-box">
+            <i
+              class="fa-solid fa-magnifying-glass fa-lg"
+              style="color: rgb(255, 212, 59)"
+            ></i>
+            &nbsp; Search for products...
+          </div>
+
+          <div class="phone-banner">
+            <h3>Great Deals<br />Big Savings!</h3>
+            <button>Shop Now</button>
+          </div>
+
+          <div class="phone-section-title">
+            <strong>Top Categories</strong>
+            <span>View all</span>
+          </div>
+
+          <div class="categories">
+            <div>
+              <div class="category-circle">📱</div>
+              <small>Electronics</small>
+            </div>
+
+            <div>
+              <div class="category-circle">👕</div>
+              <small>Fashion</small>
+            </div>
+
+            <div>
+              <div class="category-circle">🏠</div>
+              <small>Home</small>
+            </div>
+
+            <div>
+              <div class="category-circle">💄</div>
+              <small>Beauty</small>
+            </div>
+          </div>
+
+          <div class="phone-section-title">
+            <strong>Best Sellers</strong>
+            <span>View all</span>
+          </div>
+
+          <div class="products">
+            <div class="product-card">
+              <div class="product-img">🎧</div>
+              <strong>Wireless Headphones</strong>
+              <b>KSh 2,999</b>
+            </div>
+
+            <div class="product-card">
+              <div class="product-img">⌚</div>
+              <strong>Smart Watch</strong>
+              <b>KSh 3,499</b>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="shopping-bag">🛍</div>
+
+      <div class="boxes">
+        <div class="box box-one">📦</div>
+
+        <div class="box box-two">📦</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS Section -->
+  <section class="benefits">
+    <div class="section-heading">
+      <h2>Why Shop with <span>Shopiefy?</span></h2>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="large-icon">
+          <i
+            class="fa-solid fa-truck-fast"
+            style="color: hsl(182, 25%, 50%)"
+          ></i>
+        </div>
+        <h3>Fast Delivery</h3>
+        <p>Quick and reliable delivery right to your doorstep.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="large-icon">
+          <i
+            class="fa-solid fa-shield-halved"
+            style="color: rgb(255, 212, 59)"
+          ></i>
+        </div>
+        <h3>Reliable Service</h3>
+        <p>We ensure a smooth and secure shopping experience.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="large-icon">
+          <i class="fa-solid fa-tag" style="color: hsl(182, 25%, 50%)"></i>
+        </div>
+        <h3>Affordable Prices</h3>
+        <p>Best quality products at prices that fit your budget.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="large-icon">
+          <i class="fa-solid fa-headset" style="color: rgb(255, 212, 59)"></i>
+        </div>
+        <h3>24/7 Support</h3>
+        <p>Our support team is always here to help you.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="large-icon">
+          <i
+            class="fa-solid fa-person-walking-arrow-loop-left"
+            style="color: hsl(182, 25%, 50%)"
+          ></i>
+        </div>
+        <h3>Easy Returns</h3>
+        <p>Hassle-free returns within 7 days.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURES SECTION ================= -->
+  <section class="features">
+    <div class="section-heading">
+      <h2>Features <span>Designed for You</span></h2>
+
+      <div class="heading-line"></div>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+
+        <h3>Mobile Friendly</h3>
+
+        <p>Seamless shopping experience on any device, anytime.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+
+        <h3>Secure Payments</h3>
+
+        <p>Multiple secure payment options for your peace of mind.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+
+        <h3>Quality Products</h3>
+
+        <p>We partner with trusted brands to bring you the best quality.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">%</div>
+
+        <h3>Exclusive Deals</h3>
+
+        <p>Enjoy amazing discounts and exclusive offers every day.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRUSTED BRANDS ================= -->
+  <section class="trusted">
+    <h2>Trusted by <span>Leading Brands</span></h2>
+
+    <div class="brand-list">
+      <div class="brand samsung">SAMSUNG</div>
+
+      <div class="brand hp">
+        <strong>hp</strong>
+      </div>
+
+      <div class="brand safaricom">Safaricom</div>
+
+      <div class="brand nike">✓</div>
+
+      <div class="brand philips">PHILIPS</div>
+
+      <div class="brand unilever">Unilever</div>
+
+      <div class="brand xiaomi">mi</div>
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA ================= -->
+  <section class="final-cta con">
+    <div>
+      <h2>Ready to Start Shopping?</h2>
+
+      <p>Discover great products, amazing prices, and fast delivery.</p>
+    </div>
+
+    <a href="#" class="cta-white"><button>Shop Now →</button></a>
+  </section>
 </div>
 {% endblock %}

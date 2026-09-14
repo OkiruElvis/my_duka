@@ -7,25 +7,25 @@ conn=psycopg2.connect(host='localhost',port=5432,user='postgres',password='Qwert
 cur=conn.cursor()
 
 
-# def get_products():
-#     cur.execute('select * from products')
-#     products=cur.fetchall()
-#     return products
+def get_products():
+    cur.execute('select * from products')
+    products=cur.fetchall()
+    return products
 
 
 
 # #Inserting one data at a time
-# # def insert_products():
-# #     cur.execute("insert into products(name,buying_price,selling_price)values('iphone',50000,60000)")
-# #     conn.commit()
+def insert_products():
+    cur.execute("insert into products(name,buying_price,selling_price)values('iphone',50000,60000)")
+    conn.commit()
 
-# # insert_products()
+# insert_products()
 
 
 # #creating a reusable 
-# def insert_products(product_values):
-#     cur.execute("insert into products(name,buying_price,selling_price)values(%s,%s,%s)",product_values)
-#     conn.commit()
+def insert_products(product_values):
+    cur.execute("insert into products(name,buying_price,selling_price)values(%s,%s,%s)",product_values)
+    conn.commit()
 
 # product1=('predator',2500,5500)
 # product2=('hp probook',35000,40000)
@@ -36,16 +36,16 @@ cur=conn.cursor()
 # products=get_products()
 # print(products)
 
-# def get_sales():
-#     cur.execute('select * from sales')
-#     sales=cur.fetchall()
-#     return sales
+def get_sales():
+    cur.execute('select * from sales')
+    sales=cur.fetchall()
+    return sales
 
 
 
-# def insert_sales(total_sales):
-#     cur.execute("insert into sales(pid,quantity)values(%s,%s)",total_sales)
-#     conn.commit()
+def insert_sales(total_sales):
+    cur.execute("insert into sales(pid,quantity)values(%s,%s)",total_sales)
+    conn.commit()
 
 # sale1=(7,100)
 
@@ -59,6 +59,8 @@ def get_stock():
     cur.execute("select * from stock")
     stock=cur.fetchall()
     return stock
+
+
 
 def insert_stock(stock_values):
     cur.execute("insert into stock(pid,stock_quantity)values(%s,%s)",stock_values)
@@ -83,6 +85,7 @@ def get_sales_per_product():
 
 # sales_per_product=get_sales_per_product()
 # print(sales_per_product)
+
 
 def get_profit_per_day():
     cur.execute("""
@@ -121,8 +124,18 @@ def get_profit_per_product():
     profit_per_product=cur.fetchall()
     return profit_per_product
 
-profit_per_product=get_profit_per_product()
-print(profit_per_product)
+# profit_per_product=get_profit_per_product()
+# print(profit_per_product)
+
+# def products():
+#     cur.execute("""
+#                 select products.id,products.name,products.buying_price, products.selling_price from 
+#                 products order by products.id""")
+#     products=cur.fetchall()
+#     return products
+
+# products=products()
+# print(products)
 
 
 

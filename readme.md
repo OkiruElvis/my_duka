@@ -209,3 +209,83 @@ Control Structures -> building blocks of a programming language -> Control struc
 {% endif %} ---> termination
 
 Task on Jinja In the products route where we have the variable products = ['milk','eggs','shoes'] , use a for loop inside products.html to loop through the products and only display 'eggs' in a h1 tag
+
+Task -> Display the products data inside products.html using a Bootstrap table
+
+[(1, 'milk', Decimal('50.00'), Decimal('60.00')), (2, 'bread', Decimal('50.00'), Decimal('60.00'))]
+
+pid name\
+
+Task 1.Apply datatables for products and stock data 2.Style the home / landing page accordingly -> Header CTA Benefits of using the product Features Trusted Logos 3.Style your navbar and footer accordingly Navbar -> space nav items ->have register & login floated to the far right -> get a logo and unique name for your application Footer -> copyright & social media links --> have consistent colours for both navbar and 
+
+
+
+POSTING DATA IN FLASK -> Posting : sending a request from a client to a server -> Http has a request -response structure -> request : sending data from client to server -> response : data / message from server to client
+
+*POSTING PRODUCTS IN FLASK workflow / process*
+1.User is provided with a form to fill 
+2.The form should have all product related fields 
+3.User will fill and submit this form to a route in the server 
+4.The server will extract data from the form using a request object 
+            N/B: 
+            data from the form is sent in key-value pair format 
+            -> the key is used to access the value 
+            -> the request object has access to some methods: 
+            1.request.method -> used to identify what method has been defined in the form 
+            2.request.form -> used to extract form data using its key 
+5.Data is then processed 
+6.We reuse the insert_products() function after importing to add our new product 
+7.User is notified of successfull / failed request 8.User is redirected
+
+
+*Form checklist for posting data*
+1.method attribute -> method represents what a server can do with a resource / data 
+2.action attribute -> represents the route in which the data is to be submitted to 
+3.name attribute -> value of the name attribute represents the key that is used to access the data by the request object 
+4.input type 
+5.button of type submit
+
+*Methods* 
+1.GET -> move data from a server to a client -> e.g. displaying products / sales / stock 
+2.POST -> move data / resources from a client to a server as a request -> e.g.add products / login / register / send a tweet 
+3.PUT -> update an existing resource -> e.g.changing passwords / changing profile pics / changing prod name / prices 
+4.DELETE -> getting rid of a resource / data -> deleting products
+
+p_name : "Eggs" b_price : 17 s_price : 20
+
+
+*redirection* -> taking a user from one resource to another -> to enable redirection, we use the function redirect(url_for(''))
+
+redirect() -> redirect a user to another resource url_for() -> thiis function takes the name of the view function in the route to be redirected to
+
+http status codes 
+-> special codes / designated numbers meant to be a way for the server to respond to user requests or actions 
+-> they have categories based on the type of message
+
+1.Informational responses 
+        -> General purpose responses 
+        -> the server has received a request and is contiuning to process it 
+        -> they start with 1xx 
+2.Successful responses 
+        -> Signify that a request was executed successfully 
+        -> start with 2xx -> e.g 200 -> OK e.g 201 
+        -> Created successfully => adding a product 
+3.Redirection responses 
+        -> represent redirection messages 
+        -> start with 3XX 4.Client errors 
+        -> error on client side -> start with 4XX 
+5.Server errors 
+        -> error on server side 
+        -> start with 5XX
+
+task -> Implement adding sales using a form in the sales page
+
+posting with a form in a modal
+
+select a product and quantity | we pick the product id of that product | insert product id along with quantity
+
+Task 
+        1.modify add products form to use a modal 
+        2.implement posting stock with a modal
+
+flash notifications making purchases

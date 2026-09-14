@@ -1,10 +1,69 @@
-{% extends 'base.html' %}
-{% block title %} Register {% endblock %}
-{% block content %}
+{% extends 'base.html' %} {% block title %} Register {% endblock %} {% block
+content %}
 <div class="container">
+  <!-- <p>This is the register page</p> -->
 
-    <p>This is the register page</p>
-
-
+  <div class="register">
+    <form class="px-4 py-3">
+      <div class="reg">
+        <h2>Register</h2>
+      </div>
+      <div class="mb-3">
+        <label for="exampleDropdownFormEmail1" class="form-label"
+          >Email address</label
+        >
+        <input
+          type="email"
+          class="form-control"
+          id="exampleDropdownFormEmail1"
+          placeholder="email@example.com"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleDropdownFormPassword1" class="form-label"
+          >Password</label
+        >
+        <input
+          type="password"
+          class="form-control"
+          id="exampleDropdownFormPassword1"
+          placeholder="Password"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleDropdownFormPassword1" class="form-label"
+          >Phone Number(Optional)</label
+        >
+        <input
+          type="tel"
+          class="form-control"
+          id="exampleDropdownFormPassword1"
+          placeholder="123-456-7890"
+          pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+        />
+      </div>
+      <div class="mb-3">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="dropdownCheck" />
+          <label class="form-check-label" for="dropdownCheck">
+            I agree to receive product updates and special offers via WhatsApp
+            and SMS. You can withdraw consent anytime. More info in
+            <a href="/">Privacy Policy</a>.
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/login"
+      >Already have an account? <span>Log In</span></a
+    >
+    <p>
+      By continuing you agree with our <a href="">Terms of Service</a> and
+      confirm that you have read our <a href="">Privacy Policy</a>. We may send
+      you product updates and special offers via email. You can opt out anytime
+      (see <a href="">Privacy Policy</a>).
+    </p>
+  </div>
 </div>
 {% endblock %}

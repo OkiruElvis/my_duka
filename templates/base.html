@@ -5,21 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/index.css" />
     <title>{% block title %} {% endblock %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/3.0.3/css/dataTables.dataTables.min.css"
+    />
+    <script src="https://cdn.datatables.net/3.0.3/js/dataTables.min.js"></script>
   </head>
-  <body>
+  <body class="bdy">
     <div class="container-fluid">
+      <div class="container-fluid socials">
+        <div>
+          <a href="/"
+            ><i
+              class="fa-brands fa-facebook fa-sm"
+              style="color: rgb(64, 58, 37)"
+            ></i
+          ></a>
+          <a href="/"
+            ><i
+              class="fa-brands fa-instagram fa-sm"
+              style="color: rgb(64, 58, 37)"
+            ></i
+          ></a>
+          <a href="/"
+            ><i
+              class="fa-brands fa-tiktok fa-sm"
+              style="color: rgb(64, 58, 37)"
+            ></i
+          ></a>
+          <a href="/"
+            ><i
+              class="fa-brands fa-linkedin-in fa-sm"
+              style="color: rgb(64, 58, 37)"
+            ></i
+          ></a>
+          <a href="/"
+            ><i
+              class="fa-brands fa-x-twitter fa-sm"
+              style="color: rgb(64, 58, 37)"
+            ></i
+          ></a>
+        </div>
 
+        <div>
+          <a href=""
+            ><i
+              class="fa-brands fa-whatsapp fa-sm"
+              style="color: rgb(99, 230, 190)"
+            ></i
+            >+254 720 159 253 |
+            <i
+              class="fa-regular fa-envelope fa-sm"
+              style="color: rgb(255, 212, 59)"
+            ></i
+            >info@shopiefy.com</a
+          >
+        </div>
+      </div>
 
-       <!-- <p>NAVBAR</p> -->
+      <!-- <p>NAVBAR</p> -->
       <!-- This is the NavBar -->
       <nav class="navbar">
-        <div class="navbar-container"> <!-- New container for the whole navbar content -->
+        <div class="navbar-container">
+          <!-- New container for the whole navbar content -->
           <!-- NavBar-Left -->
-          <div class="navbar-left">
-            <a class="navbar-brand" href="/">MyDuka</a>
-          </div>
-         
+
+          <a href="/" class="logo">
+            <div class="navbar-left">
+              <img src="" alt="" />
+              <span>Shop<span>iefy</span></span>
+            </div>
+          </a>
+
           <!-- NavBar-Center -->
           <div class="navbar-center">
             <ul class="nav-links">
@@ -32,7 +100,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="/stock">Stock</a>
               </li>
-                <li class="nav-item">
+              <li class="nav-item">
                 <a class="nav-link" href="/sales">Sales</a>
               </li>
               <li class="nav-item">
@@ -45,27 +113,46 @@
           <div class="navbar-right">
             <ul class="nav-links">
               <li class="nav-item">
-                <a class="nav-link" href="/register">Register</a>
+                <a class="nav-link" href="/login">Login</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link" href="/register">Register</a>
               </li>
             </ul>
           </div>
-
         </div>
       </nav>
 
-     
-   
+      <div class="delivery">
+        <i class="fa-solid fa-truck" style="color: rgb(255, 212, 59)"></i>
+        &nbsp; FREE DELIVERY on Orders Over Ksh 2000! &nbsp;<a href="/"
+          >Shop Now!</a
+        >
+      </div>
 
 
 
+
+
+      <div>
+        {% with messages = get_flashed_messages(with_categories= true) %} {% if
+        messages %} {% for category,message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+          {{ message}}
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+          ></button>
+        </div>
+        {% endfor %} {% endif %} {% endwith %}
+      </div>
+
+
+
+      
 
       {% block content %} {% endblock %}
-
-
-
 
       <!-- This is the Footer -->
       <div class="footer-main">
@@ -74,11 +161,42 @@
           <div class="footer-container">
             <!-- Column 1: About Brand -->
             <div class="footer-col">
-              <h3>MyDuka</h3>
+              <h3>Shopiefy</h3>
               <p>
                 Your number one online store for fast, reliable, and affordable
                 shopping right at your doorstep.
               </p>
+
+              <a href="/"
+                ><i
+                  class="fa-brands fa-facebook fa-lg"
+                  style="color: rgb(255, 212, 59)"
+                ></i
+              ></a>
+              <a href="/"
+                ><i
+                  class="fa-brands fa-instagram fa-lg"
+                  style="color: rgb(255, 212, 59)"
+                ></i
+              ></a>
+              <a href="/"
+                ><i
+                  class="fa-brands fa-tiktok fa-lg"
+                  style="color: rgb(255, 212, 59)"
+                ></i
+              ></a>
+              <a href="/"
+                ><i
+                  class="fa-brands fa-linkedin-in fa-lg"
+                  style="color: rgb(255, 212, 59)"
+                ></i
+              ></a>
+              <a href="/"
+                ><i
+                  class="fa-brands fa-x-twitter fa-lg"
+                  style="color: rgb(255, 212, 59)"
+                ></i
+              ></a>
             </div>
 
             <!-- Column 2: Quick links -->
@@ -104,12 +222,10 @@
             </div>
           </div>
           <div class="footer-bottom">
-            <p>&copy; 2026 MyDuka. All rights reserved.</p>
+            <p>&copy; 2026 Shopiefy. All rights reserved.</p>
           </div>
         </footer>
       </div>
-
-
 
       <script
         src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -121,6 +237,10 @@
         integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
         crossorigin="anonymous"
       ></script>
+
+      <script>
+        new DataTable("#example");
+      </script>
     </div>
   </body>
 </html>
