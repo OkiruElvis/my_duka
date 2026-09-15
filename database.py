@@ -137,6 +137,19 @@ def get_profit_per_product():
 # products=products()
 # print(products)
 
+def available_stock(pid):
+    cur.execute("select sum(stock.stock_quantity) from stock where pid=%s",(pid,))
+    total_stock=cur.fetchone()[0] or 0
+
+    cur.execute("select sum(sales.quantity) from sales where pid=%s",(pid,))
+    total_sold=cur.fetchone()[0] or 0
+
+    return total_stock - total_sold
+
+
+check_stock = available_stock(1)
+print(check_stock)
+
 
 
 

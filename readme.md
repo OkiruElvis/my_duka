@@ -1,8 +1,6 @@
-Open up a new terminal and run the following commands;
-1.pip install flask
-2. pip install psycopg2-binary
+Open up a new terminal and run the following commands: 1.pip install flask 2.pip install psycopg2-binary
 
-Create the following tables in PSQL
+Open sql shell: Once connected to postgres: 1.Create a new database called myduka create database myduka; 2.Next connect to that database \c myduka 3.Create tables using the following commands:
 
 CREATE TABLE products (
     id SERIAL PRIMARY KEY,
@@ -19,78 +17,68 @@ CREATE TABLE stock (
 );
 
 CREATE TABLE sales (
-        id SERIAL PRIMARY KEY,
-        pid INTEGER NOT NULL REFERENCES products(id) ON DELETE CASCADE,
-        quantity INTEGER NOT NULL CHECK (quantity > 0),
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
+    id SERIAL PRIMARY KEY,
+    pid INTEGER NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+    quantity INTEGER NOT NULL CHECK (quantity > 0),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
-    CREATE TABLE users (
-        id SERIAL PRIMARY KEY,
-        full_name VARCHAR(255) NOT NULL,
-        email VARCHAR(255) NOT NULL UNIQUE,
-        phone_number VARCHAR(100) NOT NULL,
-        password VARCHAR(255) NOT NULL
-    );
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    phone_number VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+Pre-requisites: 1.SQL -> primary keys, foreign keys, relationships, sql queries , joins, aggeregate functions, sql clauses (where) 2.Python -> data types , data structures(lists and tuples),conditional statements, loops, functions
 
-    Pre-requisites: 1.SQL -> primary keys, foreign keys, relationships, sql queries , joins, aggeregate functions, sql clauses (where) 2.Python -> data types , data structures(lists and tuples),conditional statements, loops, functions
+insert into stock(1,'eggs')
 
-    insert into products(name,buying_price,selling_price)values('milk',50,60);
+insert into products(name,buying_price,selling_price)values('milk',50,60);
 
-    INTRODUCTION TO PSYCOPG2 PIP -> Python package manager -> Pip Installs Packages -> used to download external libraries in Python
+INTRODUCTION TO PSYCOPG2 PIP -> Python package manager -> Pip Installs Packages -> used to download external libraries in Python
 
-    psycopg2 -> a database driver / adapter used to connect Python to a Postgres database -> To establish this connection, we use the function psycopg2.connect()
+psycopg2 -> a database driver / adapter used to connect Python to a Postgres database -> To establish this connection, we use the function psycopg2.connect()
 
-    conn - a variable representing our connection to the database psycopg2.connect() - a function meant to create or establish a new database connection -> To create this connection it needs some arguments: 1.host => on what server is your database hosted => localhost (your local device / pc) 2.port => where exactly in my pc / server do i find the Postgres service => 5432 : default Postgres port 3.user -> default Postgres username : postgres 4.password -> password attached to a Postgres user 5.dbname -> name of the database you want to connect to
+conn - a variable representing our connection to the database psycopg2.connect() - a function meant to create or establish a new database connection -> To create this connection it needs some arguments: 1.host => on what server is your database hosted => localhost (your local device / pc) 2.port => where exactly in my pc / server do i find the Postgres service => 5432 : default Postgres port 3.user -> default Postgres username : postgres 4.password -> password attached to a Postgres user 5.dbname -> name of the database you want to connect to
 
-    domain name vs ip address ip address -> a number that is used to uniquely identify a device on a network -> users trying to access an application must know the server's ip address beforehand e.g172.200.121.200
+domain name vs ip address ip address -> a number that is used to uniquely identify a device on a network -> users trying to access an application must know the server's ip address beforehand e.g172.200.121.200
 
-    domain name -> a human friendly name for an ip address that helps end users access applications easily -> e.g google server => 172.200.121.200 -> google.com
+domain name -> a human friendly name for an ip address that helps end users access applications easily -> e.g google server => 172.200.121.200 -> google.com
 
-    dns -> domain name system -> translates domain names into ip addresses
+dns -> domain name system -> translates domain names into ip addresses
 
-    google.com ---> dns lookup -> dns --> 172.200.121.200
+google.com ---> dns lookup -> dns --> 172.200.121.200
 
-    your local device => has a default ip address of 127.0.0.1 127.0.0.1 -> ip address localhost -> domain name for 127.0.0.1
+your local device => has a default ip address of 127.0.0.1 127.0.0.1 -> ip address localhost -> domain name for 127.0.0.1
 
-    performing database operations with psycopg2 -> to perform db operations , we use a cursor object cur -> object used to perform db operations cur.execute() -> a function / method used by cursor object to execute sql queries cur.fetchall() -> a function / method used to extract data from a Postgres environmnent and back to Python
+performing database operations with psycopg2 -> to perform db operations , we use a cursor object cur -> object used to perform db operations cur.execute() -> a function / method used by cursor object to execute sql queries cur.fetchall() -> a function / method used to extract data from a Postgres environmnent and back to Python
 
-    [(136, 'milk', Decimal('50.00'), Decimal('60.00')), (137, 'bread', Decimal('55.00'), Decimal('65.00'))]
+[(136, 'milk', Decimal('50.00'), Decimal('60.00')), (137, 'bread', Decimal('55.00'), Decimal('65.00'))]
 
-    N/B -> expect your data from cur.fetchall() as a list of tuples list -> entire dataset tuple -> a single record / row in that dataset
+N/B -> expect your data from cur.fetchall() as a list of tuples list -> entire dataset tuple -> a single record / row in that dataset
 
-    insert data with psycopg2 cur.execute(insert query here...) conn.commit() -> permanently saves your data in the db
+insert data with psycopg2 cur.execute(insert query here...) conn.commit() -> permanently saves your data in the db
 
-    transaction states Active -> means an sql query is still running Partially Committed -> query has finished running but the data has not been permanently saved in the database Aborted -> the query has been stopped before completion Committed -> query finished running and data has been permanently saved in the database
+transaction states Active -> means an sql query is still running Partially Committed -> query has finished running but the data has not been permanently saved in the database Aborted -> the query has been stopped before completion Committed -> query finished running and data has been permanently saved in the database
 
-    insert data ----> partially committed ----> committed
+insert data ----> partially committed ----> committed
 
-    To have our insert functions be reusable we let it take parameter(s)
+To have our insert functions be reusable we let it take parameter(s)
 
-    %s -> represents psycopg2 placeholders
+%s -> represents psycopg2 placeholders
 
-    Task Using functions write 2 functions: 1.get_sales() 2.insert_sales()
+Task Using functions write 2 functions: 1.get_sales() 2.insert_sales()
 
-    sales per product select products.name , sum(sales.quantity * products.selling_price ) as total_sales from sales join products on sales.pid = products.id group by products.name;
+sales per product select products.name , sum(sales.quantity * products.selling_price ) as total_sales from sales join products on sales.pid = products.id group by products.name;
 
-    profit per day select date(sales.created_at) as day, sum((products.selling_price - products.buying_price) * sales.quantity) as total_profit from sales join products on sales.pid = products.id group by day;
+profit per day select date(sales.created_at) as day, sum((products.selling_price - products.buying_price) * sales.quantity) as total_profit from sales join products on sales.pid = products.id group by day;
 
-    Multiline strings -> A string that spans more than a single line -> To use a multiline string we use triple opening and closing quotations
+Multiline strings -> A string that spans more than a single line -> To use a multiline string we use triple opening and closing quotations
 
-    Task Use psycopg2 to write functions that fetch the followng data : sales per day profit per product
+Task Use psycopg2 to write functions that fetch the followng data : sales per day select date(sales.created_at) as day , sum(sales.quantity * products.selling_price) as t_sales from sales join products on sales.pid = products.id group by day; profit per product select products.name as p_name , sum((products.selling_price - products.buying_price) * sales.quantity) as profit from sales join products on sales.pid = products.id group by p_name;
 
-
-    **OBJECT ORIENTED PROGRAMMING**->OOP
-    ->int,str,bool,float->Data Types
-
-    ->Broadly we have 2 categories of data types:
-        1. *Inbuilt Data Types*
-        ->comes with the programming language ->int,str,float,bool
-        2. *User-defined data types*
-        ->custom data types built classes and objects to represnt custom types
-
-
- OBJECT ORIENTED PROGRAMMING -> OOP : The paradigm or concept of building programs around classes and objects
+OBJECT ORIENTED PROGRAMMING -> OOP : The paradigm or concept of building programs around classes and objects
 
 Primitive data types -> inbuilt data types int float str bool
 
@@ -102,20 +90,13 @@ class -> A template for creating objects object ->An instance of a class
 
 blueprint used to build the house -> class the actual / real building -> object
 
-Any class has 3 things: 
-
-1.Identity -> the unique name used to identify a class e.g. class Car -> Typically we give classes identities in title case 
-
-2.State -> represents data in a class -> answers the question: what does a class have? -> we use attributes to represent state ->attributes : are just variables inside a class 
-
-3.Behaviour -> represents what the class can do? -> this is enabled by use of methods -> method: is just a function inside a class
+Any class has 3 things: 1.Identity -> the unique name used to identify a class e.g. class Car -> Typically we give classes identities in title case 2.State -> represents data in a class -> answers the question: what does a class have? -> we use attributes to represent state ->attributes : are just variables inside a class 3.Behaviour -> represents what the class can do? -> this is enabled by use of methods -> method: is just a function inside a class
 
 examples class Car 1.Identity : Car 2.State -> no_of_wheels,engine_capacity,no_of_doors,is_electric,make 3.Behaviour -> start, stop, speed, park, carry_goods
 
 class Student class Dog
 
 init() -> a constructor constructor -> a special method that is automatically called when creating an object ,used to initialize an object with some values -> It has leading and trailing double underscores -> it is a dunder method -> dunder -> double underscore -> the purpose of the underscores is to identify this method as a special method self -> refers to the object itself
-
 
 Task on OOP 1.Create a class called BankAccount with the following attributes: -account number -balance -owner name -date opened 2.Give the above BankAccount class the following behaviour or methods: -deposit() -withdraw() -display_info() 3.Create two BankAccount objects that can deposit, withdraw and display_info––
 
@@ -197,7 +178,6 @@ template inheritance -> a feature in Flask that allows us to build application p
 
 Task -> Recreate your navbar (use a Bootstrap navbar) and have it in base.html -> ensure that navbar features across all inheriting pages -> Do the same with a real footer
 
-
 Jinja -> A templating engine integrated with Flask meant to render dynamic html pages -> It is simply syntax that is used depending on whether we are trying to render simple data or use control structures
 
 -> jinja when rendering data : use {{ }} -> jinja when using control structures : {% %} -> Jinja with control structures has to be initialized and terminated
@@ -216,67 +196,25 @@ Task -> Display the products data inside products.html using a Bootstrap table
 
 pid name\
 
-Task 1.Apply datatables for products and stock data 2.Style the home / landing page accordingly -> Header CTA Benefits of using the product Features Trusted Logos 3.Style your navbar and footer accordingly Navbar -> space nav items ->have register & login floated to the far right -> get a logo and unique name for your application Footer -> copyright & social media links --> have consistent colours for both navbar and 
-
-
+Task 1.Apply datatables for products and stock data 2.Style the home / landing page accordingly -> Header CTA Benefits of using the product Features Trusted Logos 3.Style your navbar and footer accordingly Navbar -> space nav items ->have register & login floated to the far right -> get a logo and unique name for your application Footer -> copyright & social media links --> have consistent colours for both navbar and footer
 
 POSTING DATA IN FLASK -> Posting : sending a request from a client to a server -> Http has a request -response structure -> request : sending data from client to server -> response : data / message from server to client
 
-*POSTING PRODUCTS IN FLASK workflow / process*
-1.User is provided with a form to fill 
-2.The form should have all product related fields 
-3.User will fill and submit this form to a route in the server 
-4.The server will extract data from the form using a request object 
-            N/B: 
-            data from the form is sent in key-value pair format 
-            -> the key is used to access the value 
-            -> the request object has access to some methods: 
-            1.request.method -> used to identify what method has been defined in the form 
-            2.request.form -> used to extract form data using its key 
-5.Data is then processed 
-6.We reuse the insert_products() function after importing to add our new product 
-7.User is notified of successfull / failed request 8.User is redirected
+POSTING PRODUCTS IN FLASK workflow / process 1.User is provided with a form to fill 2.The form should have all product related fields 3.User will fill and submit this form to a route in the server 4.The server will extract data from the form using a request object N/B: data from the form is sent in key-value pair format -> the key is used to access the value -> the request object has access to some methods: 1.request.method -> used to identify what method has been defined in the form 2.request.form -> used to extract form data using its key 5.Data is then processed 6.We reuse the insert_products() function after importing to add our new product 7.User is notified of successfull / failed request 8.User is redirected
 
+form checklist for posting data 1.method attribute -> method represents what a server can do with a resource / data 2.action attribute -> represents the route in which the data is to be submitted to 3.name attribute -> value of the name attribute represents the key that is used to access the data by the request object 4.input type 5.button of type submit
 
-*Form checklist for posting data*
-1.method attribute -> method represents what a server can do with a resource / data 
-2.action attribute -> represents the route in which the data is to be submitted to 
-3.name attribute -> value of the name attribute represents the key that is used to access the data by the request object 
-4.input type 
-5.button of type submit
-
-*Methods* 
-1.GET -> move data from a server to a client -> e.g. displaying products / sales / stock 
-2.POST -> move data / resources from a client to a server as a request -> e.g.add products / login / register / send a tweet 
-3.PUT -> update an existing resource -> e.g.changing passwords / changing profile pics / changing prod name / prices 
-4.DELETE -> getting rid of a resource / data -> deleting products
+http methods 1.GET -> move data from a server to a client -> e.g. displaying products / sales / stock 2.POST -> move data / resources from a client to a server as a request -> e.g.add products / login / register / send a tweet 3.PUT -> update an existing resource -> e.g.changing passwords / changing profile pics / changing prod name / prices 3.DELETE -> getting rid of a resource / data -> deleting products
 
 p_name : "Eggs" b_price : 17 s_price : 20
 
-
-*redirection* -> taking a user from one resource to another -> to enable redirection, we use the function redirect(url_for(''))
+redirection -> taking a user from one resource to another -> to enable redirection, we use the function redirect(url_for(''))
 
 redirect() -> redirect a user to another resource url_for() -> thiis function takes the name of the view function in the route to be redirected to
 
-http status codes 
--> special codes / designated numbers meant to be a way for the server to respond to user requests or actions 
--> they have categories based on the type of message
+http status codes -> special codes / designated numbers meant to be a way for the server to respond to user requests or actions -> they have categories based on the type of message
 
-1.Informational responses 
-        -> General purpose responses 
-        -> the server has received a request and is contiuning to process it 
-        -> they start with 1xx 
-2.Successful responses 
-        -> Signify that a request was executed successfully 
-        -> start with 2xx -> e.g 200 -> OK e.g 201 
-        -> Created successfully => adding a product 
-3.Redirection responses 
-        -> represent redirection messages 
-        -> start with 3XX 4.Client errors 
-        -> error on client side -> start with 4XX 
-5.Server errors 
-        -> error on server side 
-        -> start with 5XX
+1.Informational responses -> General purpose responses -> the server has received a request and is contiuning to process it -> they start with 1xx 2.Successful responses -> Signify that a request was executed successfully -> start with 2xx -> e.g 200 -> OK e.g 201 -> Created successfully => adding a product 3.Redirection responses -> represent redirection messages -> start with 3XX 4.Client errors -> error on client side -> start with 4XX 5.Server errors -> error on server side -> start with 5XX
 
 task -> Implement adding sales using a form in the sales page
 
@@ -284,8 +222,46 @@ posting with a form in a modal
 
 select a product and quantity | we pick the product id of that product | insert product id along with quantity
 
-Task 
-        1.modify add products form to use a modal 
-        2.implement posting stock with a modal
+Task 1.modify add products form to use a modal 2.implement posting stock with a modal
 
-flash notifications making purchases
+flash notifications -> One time notifications to the user to give them feedback based on some action -> Flash messages are enabled by flash() function which is imported from flask -> flash() can take 2 arguments : 1.Message -> the text to be displayed e.g. product added successfully 2.Message category -> the type of message displayed
+
+Message Categories 1.success : green 2.error/danger : red 3.warning : yellow 4.info : blue
+
+N/B:- Flash messages are stored in a session cookie ---> to secure them we use a secret key making purchases --> Goal: We want to make sales only from products that have enough stock -> if a product has enough stock, complete sale otherwise if not, we fail to complete sale and notify user
+
+100 eggs --> initial stock sell 20 new stock value = 80
+
+myduka_db=# select * from sales; id | pid | quantity | created_at
+----+-----+----------+---------------------------- 1 | 1 | 20 | 2026-08-19 15:15:46.763464 3 | 1 | 20 | 2026-08-19 15:16:18.429507 4 | 2 | 10 | 2026-08-19 15:16:18.432971 6 | 2 | 15 | 2026-08-19 15:49:05.265689 7 | 2 | 120 | 2026-08-19 18:54:52.085746 9 | 1 | 10 | 2026-09-09 15:17:29.260503 (6 rows)
+
+myduka_db=# select * from stock; id | pid | stock_quantity | created_at
+----+-----+----------------+---------------------------- 1 | 1 | 100 | 2026-08-19 15:31:27.92186 2 | 2 | 50 | 2026-08-19 15:31:27.929297 3 | 1 | 100 | 2026-08-19 16:09:05.873015 4 | 2 | 50 | 2026-08-19 16:09:05.879158 5 | 1 | 300 | 2026-08-19 18:58:49.423274 (5 rows)
+
+sales => amount of product out stock => product in
+
+remaining stock = stock - sales per product
+
+500 - 50 =
+
+select sum(stock.stock_quantity) from stock where pid =
+
+(10) => 10 (10,) => a tuple containing a single value of 10
+
+fetchone()-> returns a tuple -> used when we return a single value fetchall()-> returns a list of tuples-> used when there is more than one value to be returned e.g products, sales , stock data
+
+500 - 50 = 450
+
+[(450,)] ---> [0][0] (450,) ---> [0]
+
+(500,) (50,)
+
+adds a product ---> adds stock on that product ----> make sales on that product --> check stock again before making another sale
+
+adds a product ---> add no stock ----> make no sale add a product ---> add some stock ---> make no sale
+
+zero vs null / nil zero -> actual value --> 500 - 500 = 0 null -> value doesnt exist to begin with
+
+null - null --> error 200 - null --> error
+
+0 - 0 = 0 200 - 0 = 200

@@ -1,5 +1,5 @@
 from flask import Flask , render_template, request,redirect,url_for, flash
-from database import get_products,get_sales,get_stock,insert_products,insert_sales, insert_stock
+from database import get_products,get_sales,get_stock,insert_products,insert_sales, insert_stock,available_stock
 # import psycopg2
 
 
@@ -50,10 +50,21 @@ def add_sales():
         sales_quantity=request.form['s_quantity']
 
         new_sale=(product_id, sales_quantity)
-        insert_sales(new_sale)
 
-        flash("Sale Added Successfully!","success")
+
+        check_stock=available_stock(product_id)
+
+        if check_stock < float(sales_quantity):
+            flash(f"Insufficient stock to complete sale, only {check_stock} remaining",'danger')
+            return redirect(url_for('sales'))
+
+        insert_sales(new_sale)
+        flash("Sale made successfully",'success')
+
     return redirect(url_for('sales'))
+        
+
+
         
         
      
@@ -73,7 +84,10 @@ def add_stck():
         insert_stock(new_stock)
 
         flash("New Stock Updated Successfully!","success")
-    return redirect(url_for('stock'))    
+    return redirect(url_for('stock')) 
+
+
+
 
 @app.route('/dashboard')
 def dashboard():
