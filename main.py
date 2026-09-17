@@ -1,10 +1,15 @@
 from flask import Flask , render_template, request,redirect,url_for, flash
-from database import get_products,get_sales,get_stock,insert_products,insert_sales, insert_stock,available_stock
+from database import get_products,get_sales,get_stock,insert_products,insert_sales, insert_stock,available_stock,check_user_exists,insert_user
+from flask_bcrypt import Bcrypt
 # import psycopg2
 
 
 #A flask instance
+# app=object and Flask=class
 app=Flask(__name__)
+
+# object=class
+bcrypt=Bcrypt(app) #bcrypt instamce
 
 app.secret_key='eldorado789eldorado'
 
@@ -75,7 +80,7 @@ def stock():
     return render_template('stock.html',stock=stock,products=products)
 
 @app.route('/add_stock',methods=['GET','POST'])
-def add_stck():
+def add_stock():
     if request.method=="POST":
         pid=request.form['pid']
         stock_quantity=request.form['stock_quantity']
@@ -93,12 +98,55 @@ def add_stck():
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/login')
+
+
+
+@app.route('/login',methods=['GET','POST'])
 def login():
+    if request.method=="POST":
+        email=request.form['email']
+        password=request.form['password']
+
+        existing_user=check_user_exists(email)
+        if not existing_user:
+            flash("User with this email not registered","danger")
+            return redirect(url_for('login'))
+
+        check_password=bcrypt.check_password_hash(existing_user[-1],password)
+
+        if check_password:
+            flash("Login successful",'success')
+            return redirect(url_for('dashboard'))
+        else:
+            flash("incorrect password,try again","danger")
+            return redirect(url_for('login'))
+
     return render_template('login.html')
 
-@app.route('/register')
+
+
+
+@app.route('/register',methods=['GET','POST'])
 def register():
+    if request.method=='POST':
+        full_name=request.form['full_name']
+        email=request.form['email']
+        phone_number=request.form['phone']
+        password=request.form['password']
+
+        existing_user=check_user_exists(email)
+        if existing_user:
+            flash("User with this email already exists, login instead",'danger')
+            return redirect(url_for('register'))
+
+        hashed_password=bcrypt.generate_password_hash(password).decode('utf-8')
+
+        new_user=(full_name,email,phone_number,hashed_password)
+        insert_user(new_user)
+        flash("User created successfully",'success')
+        return redirect(url_for('login'))
+
+
     return render_template('register.html')
 
 # debug=True->automatic update any changes done

@@ -265,3 +265,75 @@ zero vs null / nil zero -> actual value --> 500 - 500 = 0 null -> value doesnt e
 null - null --> error 200 - null --> error
 
 0 - 0 = 0 200 - 0 = 200
+
+AUTHENTICATION Authentication : process of verifying the identity of a user -> use passwords, pins , biometrics -> asks the question 'who are you?' Authorization -> determines the access rghts of a user in a system -> checks for what a user is allowed to do
+
+User registration workflow 
+1.User is provided with a registration form to fill 
+2.User fills all relevant credentials and submits the form 
+3.Form is submitted to register route in the server for processing 
+4.The request object extracts user information using the key(name attribute) 
+5.confirm that the user attempting to register hasnt already been registered using their email(unique) 
+6.If user exists,flash that user already exists and suggest they login instead 
+7.If user doesnt exist, hash their password and insert user into users table 
+8.Flash successful registration and redirect to login
+
+1 - Jane Doe - janedoe@gmail.com -0712345678 - Jane@123
+
+Password Hashing -> Is the process of converting plain text data into an encrypted format that is hard to decipher / read / understand -> Password hashing ensures passwords are protected by making them difficult to figure out
+
+Jane@123----> $ey.99wnu99d93990djnju883hu992iiujhd99ejjdjd
+
+N/B:- hashing a value always reproduces the same exact hash everytime
+
+Jane@123----> $ey.99wnu99d93990djnju883hu992iiujhd99ejjdjd Jane@123----> $ey.99wnu99d93990djnju883hu992iiujhd99ejjdjd Jane@123----> $ey.99wnu99d93990djnju883hu992iiujhd99ejjdjd
+
+person A ------> sending a file -----> hashed to produce a hash value ----> person B receives the file -> hash the received file ===> if the two hashes match it means the file has not tampered with
+
+person A hashes the file -> 003mid09o3j99djd99dj person B hashed the file -> 00wemnd662vvsjje9idj
+
+rainbow table attack -> This is a type of attack launched by a hacker targetting common passwords and their hashed
+
+password salting -> the process of adding random text to a plain text password before hashing it so that the end result becomes more complex
+
+Abc@123kks9sjjsooso -> $ghye88djd00wkjkd00wkksoosposokduyy377dhhfooekkdkd
+
+Google -> Abc@123 + e0oodejcdiid -> $e8ienj0mkw00-wkdkdkkfjkjfjjjfjf 
+Pinterest -> Abc@123 + 288uehhejm -> $fg299wmjkd002klke0pdkkdjudjjdjd
+
+flask-bcrypt 
+pip install flask-bcrypt
+
+print(5)
+
+Computer works with only binaries (0 and 1)
+
+hello world ------> bytes(0 and 1s)
+
+ASCII
+
+A -> 65 ----> 00101 a -> 97 ----> 10011
+
+Unicode -> the universal representation of any character in any language in numeric format
+
+$ -> U-449 --> unicode point ----> bytes A -> U-1772 ?
+
+utf-8 ---> a way of converting unicode points to bytes and vice versa
+
+print
+
+hello ----> unicode point. -----> bytes. -----> unicode -----> hello
+
+Jane@123 + salt ----> hashing ----> bytes -----> decode with utf-8 ----> to get a string hash value like $2b$12$1CUX8fu4xGOHUdkRw7RQsORHnQkA6EQcG64x5gPd3qLjggzs75jje
+
+Login workflow 1.User is provided with a form to fill 2.user fills in login credentials and submits the form 3.Form is submitted to login route for processing 4.request object extracts login data using request.form method 5.use the user's email to determine if they are registered 6.if user is not registered , notify to register instead and stop login 7.if user is registered , check if password is correct 8.if password is incorrect, notify with incorrect password message 9.if password is correct, store user session , redirect to dashboard and notify with success message
+
+janedoe@gmail.com Jane@123
+
+$2b$12$1CUX8fu4xGOHUdkRw7RQsORHnQkA6EQcG64x5gPd3qLjggzs75jje
+
+N/B: ---> Hashing is a one way function , meaning once a plain text value is hashed to produce a hash value you cannot decrypt the hash back to go back to the plain text
+
+In that case, we take the user's password , salt and hash it with the same salt and then compare the 2 hashes
+
+password hash-> hashed password stored in the db candidate password ---> password the user fills when attempting to log in
