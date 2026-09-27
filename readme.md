@@ -337,3 +337,56 @@ N/B: ---> Hashing is a one way function , meaning once a plain text value is has
 In that case, we take the user's password , salt and hash it with the same salt and then compare the 2 hashes
 
 password hash-> hashed password stored in the db candidate password ---> password the user fills when attempting to log in
+
+session http -> is stateless -> meaning that after a request is sent and a response given , the server doesnt recall any services given / accessed
+
+ user ----> sends request to server to get products page
+ server ---> responds with the product page
+once the page is rendered / given , the server forgets everything
+user logs in ---> access some page when they try to access another page , they are told to login again
+
+user logs in server uses session remember a user everytime a user sends a request, server checks if session is valid if valid gives access, user doesnt have to login again
+
+cookie -> a small piece of data that a website asks your browser to store session -> a way for the server to remember who you are using specific info e.g email session cookie -> a cookie used to identify a user's session
+
+session data we're storing ===> email if email is not in session ---> user has not logged in
+
+protect -> products page, sales page , stock page & dashboard page
+
+-> there is no need to protect add products because add products occurs in the products -> same thing for add sales and add stock
+
+list comprehension
+
+dashboards
+
+POS System rbac admin,user,manager
+
+data pipeline: csv file -> read (pandas) ---> validate and clean (EDA) -> insert into db -> sql queries -> analytics -> report generation(report)
+
+pandas convert a csv into a df (table)
+
+for row in table:
+
+users -- servers posts --> server followers ---> server
+
+monolith -> everything in one place
+
+server ---> ip address -> buy a domain --> link it to ip ---> make it available via domain
+
+cloud ---> devops (linux, networking, containerization, ci/cd pipelines, logging and telemetry, )
+
+paas iaas
+
+list comprehension -> An alternative approach of looping through a collection and appending to a list -> list comprehension syntax: even = [i]
+
+1.using range() loop through numbers 100 to 200 and find odd numbers using list comprehension
+
+#profit per day -> profit , days
+
+data visualization --> is the process of representing data using visual aids to help us draw insights easily --> e.g pie charts, line chart , bar chart, doughnut chart, frequency polygon,heat map, radar charts, polar area charts, scatter plots
+
+--> bar chart and line chart
+
+-> bar chart( sales per product & profit per product) x axis -> product names y axis --> sales and profit -> line chart(sales per day and profit per day) x axis - dates y axis -> sales and profit
+
+filter operator => shift + backslash

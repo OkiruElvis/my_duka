@@ -21,6 +21,7 @@
       href="https://cdn.datatables.net/3.0.3/css/dataTables.dataTables.min.css"
     />
     <script src="https://cdn.datatables.net/3.0.3/js/dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   </head>
   <body class="bdy">
     <div class="container-fluid">
@@ -94,6 +95,7 @@
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="/">Home</a>
               </li>
+              {% if session.email %}
               <li class="nav-item">
                 <a class="nav-link" href="/products">Products</a>
               </li>
@@ -106,18 +108,24 @@
               <li class="nav-item">
                 <a class="nav-link" href="/dashboard">Dashboard</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+              {% endif %}
             </ul>
           </div>
 
           <!-- NavBar-Right -->
           <div class="navbar-right">
             <ul class="nav-links">
+              {% if not session.email %}
               <li class="nav-item">
                 <a class="nav-link" href="/login">Login</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/register">Register</a>
               </li>
+              {% endif %}
             </ul>
           </div>
         </div>
@@ -129,10 +137,6 @@
           >Shop Now!</a
         >
       </div>
-
-
-
-
 
       <div>
         {% with messages = get_flashed_messages(with_categories= true) %} {% if
@@ -147,10 +151,6 @@
         </div>
         {% endfor %} {% endif %} {% endwith %}
       </div>
-
-
-
-      
 
       {% block content %} {% endblock %}
 

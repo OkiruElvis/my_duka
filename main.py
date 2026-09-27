@@ -1,6 +1,7 @@
-from flask import Flask , render_template, request,redirect,url_for, flash
-from database import get_products,get_sales,get_stock,insert_products,insert_sales, insert_stock,available_stock,check_user_exists,insert_user
+from flask import Flask , render_template, request,redirect,url_for, flash, session
+from database import get_products,get_sales,get_stock,insert_products,insert_sales, insert_stock,available_stock,check_user_exists,insert_user,get_profit_per_product,get_sales_per_day,get_profit_per_day
 from flask_bcrypt import Bcrypt
+from functools import wraps
 # import psycopg2
 
 
@@ -18,9 +19,18 @@ def home(): #view function
     name="Alex"
     return render_template('index.html',name=name)
 
+def login_required(f):
+    @wraps(f)
+    def protected(*args,**kwargs):
+        if 'email' not in session:
+            return redirect(url_for('login'))
+        return f(*args,**kwargs)
+    return protected
+
 
 # By default it's a GET ROUTE
 @app.route('/products')
+@login_required
 def products():
     products=get_products()
     return render_template('products.html',products=products)
@@ -42,6 +52,7 @@ def add_products():
 
 
 @app.route('/sales')
+@login_required
 def sales():
     sales=get_sales()
     products=get_products()
@@ -74,6 +85,7 @@ def add_sales():
         
      
 @app.route('/stock')
+@login_required
 def stock():
     stock=get_stock()
     products=get_products()
@@ -95,8 +107,25 @@ def add_stock():
 
 
 @app.route('/dashboard')
+@login_required
 def dashboard():
-    return render_template('dashboard.html')
+    sales_per_product=get_profit_per_product()
+    profit_per_product=get_profit_per_product()
+
+    sales_per_day=get_sales_per_day()
+    profit_per_day=get_profit_per_day()
+
+    product_names=[ i[0] for i in sales_per_product ]
+    product_sales=[ float(i[1]) for i in sales_per_product ]
+    product_profit=[ float(i[1]) for i in profit_per_product ]
+
+    dates=[ str(i[0]) for i in sales_per_day ]
+    daily_sales=[ float(i[1]) for i in sales_per_day ]
+    daily_profit=[ float(i[1]) for i in profit_per_day ]
+   
+    return render_template('dashboard.html',
+                           product_names=product_names,product_sales=product_sales,product_profit=product_profit,
+                           dates=dates,daily_sales=daily_sales,daily_profit=daily_profit)
 
 
 
@@ -115,6 +144,7 @@ def login():
         check_password=bcrypt.check_password_hash(existing_user[-1],password)
 
         if check_password:
+            session['email']=email
             flash("Login successful",'success')
             return redirect(url_for('dashboard'))
         else:
@@ -148,6 +178,13 @@ def register():
 
 
     return render_template('register.html')
+
+
+@app.route('/logout')
+def logout():
+    session.pop('email',None)
+    flash("logged out successfully",'success')
+    return redirect(url_for('login'))
 
 # debug=True->automatic update any changes done
 app.run(debug=True) 
